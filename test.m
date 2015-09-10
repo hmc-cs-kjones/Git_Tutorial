@@ -1,20 +1,9 @@
-//
-//  test.m
-//  
-//
-//  Created by Kathryn Jones on 9/9/15.
-//
-//
+% This tests whether the impulse_response.m function works
 
-#import <Foundation/Foundation.h>
+fs=10;
+t=-1:1/fs:1;
+x=cos(2*pi*t);    % input signal
+y=3*cos(2*pi*t);  % output signal
+[h,t]=impulse_response(x,y,fs);   % we expect the impulse response to be
+amplitude=(1/fs)*trapz(h)         % a dirac delta with amplitude 3
 
-function h = test( x, y, fs )
-% test returns the impulse response of the system given the
-% system input, x, and system output, y.
-%   inputs: x, measured input signal
-%           y, measured output signal
-%           fs, sampling frequency of measurements
-%   outputs: h, calculated impulse response
-
-[h,t] = impulse_response(x,y,fs)
-end
